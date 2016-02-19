@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class CardScanViewController: UIViewController, CardIOPaymentViewControllerDelegate {
+class CardScanViewController: CardIOPaymentViewController, CardIOPaymentViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,8 @@ class CardScanViewController: UIViewController, CardIOPaymentViewControllerDeleg
         super.viewWillAppear(animated)
         
         
-        CardIOUtilities.preload()
+        CardIOUtilities.canReadCardWithCamera()
+        
     }
     
 

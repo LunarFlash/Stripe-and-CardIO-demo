@@ -10,7 +10,7 @@ import UIKit
 import Stripe
 
 
-class ViewController: UITableViewController,UITextFieldDelegate {
+class ViewController: UITableViewController,UITextFieldDelegate, CardIOPaymentViewControllerDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var cardNumberTextField: UITextField!
@@ -27,8 +27,7 @@ class ViewController: UITableViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         
-        let scanVC = CardScanViewController()
-        self.presentViewController(scanVC, animated: true, completion: nil)
+        CardIOUtilities.preload()
         
     }
     
@@ -72,6 +71,31 @@ class ViewController: UITableViewController,UITextFieldDelegate {
         
         
     
+    }
+    
+    
+    
+    
+    @IBAction func scanBarButtonItemPressed(sender: AnyObject) {
+        let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
+        cardIOVC.modalPresentationStyle = .FormSheet
+        presentViewController(cardIOVC, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    func userDidCancelPaymentViewController(paymentViewController: CardIOPaymentViewController!) {
+        
+    }
+    
+    func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
+        
+        print("Received card info.")
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
 
 }
