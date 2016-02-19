@@ -79,6 +79,9 @@ class ViewController: UITableViewController,UITextFieldDelegate, CardIOPaymentVi
     @IBAction func scanBarButtonItemPressed(sender: AnyObject) {
         let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
         cardIOVC.modalPresentationStyle = .FormSheet
+        cardIOVC.hideCardIOLogo = true
+        
+        
         presentViewController(cardIOVC, animated: true, completion: nil)
         
     }
@@ -88,7 +91,7 @@ class ViewController: UITableViewController,UITextFieldDelegate, CardIOPaymentVi
     
     
     func userDidCancelPaymentViewController(paymentViewController: CardIOPaymentViewController!) {
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func userDidProvideCreditCardInfo(cardInfo: CardIOCreditCardInfo!, inPaymentViewController paymentViewController: CardIOPaymentViewController!) {
