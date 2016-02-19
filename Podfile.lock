@@ -1,0 +1,18 @@
+PODS:
+  - Alamofire (3.2.0)
+  - CardIO (5.3.1)
+  - Stripe (5.1.4):
+    - Stripe/Core (= 5.1.4)
+  - Stripe/Core (5.1.4)
+
+DEPENDENCIES:
+  - Alamofire
+  - CardIO
+  - Stripe (~> 5.1.4)
+
+SPEC CHECKSUMS:
+  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
+  CardIO: a299efcd0348c3b256a1da53f22951319c3855a2
+  Stripe: 6864be95b09092f05526bc2e0a50804bc556aa0d
+
+COCOAPODS: 0.39.0
